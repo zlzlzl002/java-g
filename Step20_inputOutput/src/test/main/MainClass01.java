@@ -5,15 +5,16 @@ import java.io.InputStream;
 
 /*
  * [ inputStream ] 
- * - 1byte 처리 스트림(byte 알갱이의 흐름) 2^8
+ * - 1byte 처리 스트림(byte 알갱이의 흐름) 2^8 or String
  * - 문자의 경우는 영문자 대소문자, 숫자, 특수문자 한글자를 읽어들일수 있다.
  * - 한글은 처리 불가
  * 
- * - inputStream
- * - FileinputStream
- * - FileReader
- * - inputStreamReader
- * - BufferedReader
+ * - inputStream    	| byte 알갱이
+ * - inputStreamReader	
+ * - BufferedReader		| 모든 문자열
+ * - FileinputStream | 파일에서 byte 알갱이    이미지일때
+ * - FileReader  |  파일 문자열 읽기  텍스트문서일때
+ * - console(System.in) file(new File();) socket(socket.get(inputStream)
  */
 public class MainClass01 {
 	public static void main(String[] args) {
