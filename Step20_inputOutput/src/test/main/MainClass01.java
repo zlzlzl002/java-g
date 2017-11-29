@@ -8,6 +8,10 @@ import java.io.InputStream;
  * - 1byte 처리 스트림(byte 알갱이의 흐름) 2^8
  * - 문자의 경우는 영문자 대소문자, 숫자, 특수문자 한글자를 읽어들일수 있다.
  * - 한글은 처리 불가
+ * 
+ * - inputStream
+ * - FileinputStream
+ * - FileReader
  */
 public class MainClass01 {
 	public static void main(String[] args) {
