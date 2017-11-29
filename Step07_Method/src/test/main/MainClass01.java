@@ -7,7 +7,7 @@ public class MainClass01 {
 		// MyUtil 클래스에 정의한 showVersion() 메소드를 
 		// 호출해 보세요.
 		MyUtil.showVersion();
-		
+
 		// MyUtil 클래스에 정의한 sendMessage() 메소드를 
 		// 호출해 보세요.
 		MyUtil u=new MyUtil();
