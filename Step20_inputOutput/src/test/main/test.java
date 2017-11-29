@@ -1,40 +1,28 @@
 package test.main;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-/*
- * 	[ InputStreamReader ] 
- * 	
- * 	- 문자열을 읽어들일때 사용한다.
- * 	- 2 byte 처리 스트림
- * 	- 한글을 포함한 모든 문자 1글자를 처리할수 있다.
- */
 public class test {
+	/*
+	 *  키보드로 부터 한개의 글자 코드를 입력 받아서 콘솔에 출력해보기
+	 * 	InputStream 한글 처리 안됨
+	 */
+	// 키보드로 부터 입력받을수 있는
+	// 객체의 참조값 얻어와서 변수에 담기
 	public static void main(String[] args) {
-		  if (args.length == 0) {                   // args.length 는 옵션 개수
-			     System.err.println("Input Filename...");
-			     System.exit(1);                         // 읽을 파일명을 주지 않았을 때는 종료
-		  }
-		  try {
-		      ////////////////////////////////////////////////////////////////
-		      BufferedReader in = new BufferedReader(new FileReader(args[0]));
-		      String s;
-
-		      while ((s = in.readLine()) != null) {
-		        System.out.println(s);
-		      }
-		      in.close();
-		      ////////////////////////////////////////////////////////////////
-		    } catch (IOException e) {
-		        System.err.println(e); // 에러가 있다면 메시지 출력
-		        System.exit(1);
-		    }
-
-
+		InputStream is=System.in;
+		InputStreamReader isr = new InputStreamReader(is);
+		BufferedReader br = new BufferedReader(isr);
+		System.out.println("입력한 문자열:");
+		try {
+			String str=br.readLine();
+			System.out.println("str:"+str);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
-
 }
