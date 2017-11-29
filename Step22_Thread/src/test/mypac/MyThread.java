@@ -15,5 +15,10 @@ public class MyThread implements Runnable {
 		}
 		System.out.println("MyThread Á¾·áµÊ...");
 	}
+
+	public void start() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }
