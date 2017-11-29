@@ -10,6 +10,11 @@ import java.io.InputStreamReader;
  * 	- 문자열을 읽어들일때 사용한다.
  * 	- 2 byte 처리 스트림
  * 	- 한글을 포함한 모든 문자 1글자를 처리할수 있다.
+ * 	- FileOutputStream
+ * 	- OutPutStream		
+ * 	- FileWriter
+ * 	- OutputSteamWriter
+ * 	- BufferedWriter
  */
 public class MainClass02 {
 	public static void main(String[] args) {

@@ -12,6 +12,8 @@ import java.io.InputStream;
  * - inputStream
  * - FileinputStream
  * - FileReader
+ * - inputStreamReader
+ * - BufferedReader
  */
 public class MainClass01 {
 	public static void main(String[] args) {
