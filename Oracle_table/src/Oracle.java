@@ -2,7 +2,7 @@
 oracle 데이터 베이스설치(oracle xe)  입력 수정 삭제 목록불러오기(select) 
 주로저장: number string date   |  file 은 잘사용안함 
 비밀번호 oracle
-cmd 
+cmd                           name  VARCHAR2(10)  (10)은 byte 를 표현함  name='김구라' 면 9 byte 니까 한글자당 3byte
 1. sqlplus
 2. 사용자명: system
 3. 암호: oracle
@@ -26,6 +26,11 @@ UPDATE member SET name='' WHERE num=1;
 CREATE TABLE member(num NUMBER PRIMARY KEY, name VARCHAR2(10), addr VARCHAR2(20);
 14. table 정렬 하기
 SELECT * FROM 테이블이름 ORDER BY 칼럼이름 ASC(오름차순); DESC(내림차순);
+15. table 칼럼 추가하기
+ALTER TABLE 테이블명 ADD(추가할 타입);
+16. 칼럼 길이 조정하기
+SET LINESIZE 2000;     | VARCHAR(30) 이라할때 페이지 넘어가는것을 한페이지에 보여주는 길이
+SET PAGESIZE 100; -- 한페이지에 보여지는 로우수
 
 JAVA 폴더에 OJDBC6 파일 복사해서 jdk1  jre lib ext 가서 복사 해서 넣어주기
 									jre1 폴더에서 lib ext 가서 복사해서 넣어주세요
@@ -43,5 +48,5 @@ client WebBrowser = > java application = > DB
 member 
 [ num number | name String | add string ]
 [          row 1                                 ]  회원정보를 저장할때마다 row 가생긴다.
-[          row 2                                 ]                            ]
+[          row 2                                 ]                         ]
  */

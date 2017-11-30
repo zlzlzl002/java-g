@@ -26,8 +26,8 @@ public class MainClass01 {
 		PreparedStatement pstmt=null; // !!
 		ResultSet rs =null; // !!
 		try {
-			// 실행할 sql 문 준비
-			String sql="SELECT  num, name, addr FROM member";
+			// 실행할 sql 문 준비   ORDER BY num asc는 num 으로 순서가 정의 된다.
+			String sql="SELECT * FROM member ORDER BY num asc";
 			// PreparedStatement 객체의 참조값 얻어오기
 			// (sql 문을 대신 수행해줄 객체)
 			pstmt=conn.prepareStatement(sql);

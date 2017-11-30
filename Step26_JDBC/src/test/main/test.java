@@ -8,7 +8,7 @@ import test.util.DBConnect;
 
 public class test {
 	public static void main(String[] args) {
-		MemberDto dto = new MemberDto(13, "지렁이", "명일동");
+		MemberDto dto = new MemberDto(16, "나는야김준호이당아", "명일동");
 		//dto.getAddr();
 		//dto.getName();
 		//dto.getNum();
