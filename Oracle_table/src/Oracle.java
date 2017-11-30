@@ -24,7 +24,13 @@ UPDATE member SET name='' WHERE num=1;
 12. 테이블 삭제 DROP TABLE 테이블명;  
 13. table 만들때 아이디값 주기  	EX)  num=1;  값이 2개 존재x
 CREATE TABLE member(num NUMBER PRIMARY KEY, name VARCHAR2(10), addr VARCHAR2(20);
+14. table 정렬 하기
+SELECT * FROM 테이블이름 ORDER BY 칼럼이름 ASC(오름차순); DESC(내림차순);
 
+JAVA 폴더에 OJDBC6 파일 복사해서 jdk1  jre lib ext 가서 복사 해서 넣어주기
+									jre1 폴더에서 lib ext 가서 복사해서 넣어주세요
+ResultSet  <=  PreparedStatement (select)  = > Connection = > Oracle DataBase
+				   				    < =               < =		
 
 끄고 다시키면
 sqlplus system/oracle  | system 계정으로
@@ -37,5 +43,5 @@ client WebBrowser = > java application = > DB
 member 
 [ num number | name String | add string ]
 [          row 1                                 ]  회원정보를 저장할때마다 row 가생긴다.
-[          row 2                                 ]                               ]
+[          row 2                                 ]                            ]
  */
