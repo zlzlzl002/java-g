@@ -22,12 +22,12 @@ public class MainClass07 {
 			//한번에 읽어올 byte 의 크기를 고려해서 byte[] 객체 생성하기
 			byte[] buffer=new byte[1000];
 			while(true){
-				//buffer 객체를 이용해서 byte 알갱이를 읽어들인다. 
+				//buffer 객체를 이용해서 byte 알갱이를 읽어들인다.  key값 생각
 				int readedCount=fis.read(buffer);
 				//더이상 읽을 byte 알갱이가 없다면 반복문 탈출 
-				if(readedCount == -1)break;
+				if(readedCount== -1)break;  // -1 주로 return 읽을게 없다면 | 객체는 주로 null return 해준다.
 				//buffer 객체에 저장된 byte 알갱이를 읽은 만큼 대상 파일에 출력한다.
-				fos.write(buffer, 0, readedCount);
+				fos.write(buffer, 0, readedCount); // 0번방부터
 				fos.flush();//방출
 			}
 			

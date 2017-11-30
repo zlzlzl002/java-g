@@ -28,13 +28,13 @@ public class ServerMain {
 			serverSocket = new ServerSocket(5000);
 			System.out.println("클라이언트의 Socket 연결 요청을 대기중...");
 			while (true) {
-				// 연결요청을 해오면 클라이언트와 연결된 Socket 객체의 참조값이 리턴된다.
+				// 연결요청을 해오면 클라이언트와 연결된 Socket type 객체의 참조값이 리턴된다.
 				socket = serverSocket.accept();
 				// 접속된 클라이언트의 ip 주소 얻어오기
 				String clientIp = socket.getInetAddress().getHostAddress();
 				System.out.println("clientIp:" + clientIp);
 				// Socket 을 통해서 입력 받을수 있는 스트림 객체 얻어오기
-				is = socket.getInputStream();
+				is = socket.getInputStream();  // 메소드를 통해서
 				isr = new InputStreamReader(is);
 				br = new BufferedReader(isr);
 				// 클라이언트가 전송한 문자열을 줄단위로 읽어온다.
