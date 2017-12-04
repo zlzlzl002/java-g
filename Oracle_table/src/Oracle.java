@@ -13,9 +13,12 @@ cmd                           name  VARCHAR2(10)  (10)은 byte 를 표현함  name='�
 CREATE TABLE  member(num NUMBER, name VARCHAR2(10), addr VARCHAR2(20));  ()안 3개 정의 칼럼은 3개다
 8. Table 확인 하는방법 : DESC talbe name;           ex) DESC member 
 8. data 저장하는법 
-INSERT INTO member ( num, name, addr ) VALUES(1, '김구라', '노량진');  <= row 
+INSERT INTO 테이블명 ( num, name, addr ) VALUES(1, '김구라', '노량진');  <= row 
+INSERT INTO 테이블명 ( num, name, addr) VALUES(test_seq.NEXTVAL,'a',b');
 9. table 저장된 목록보기  SELECT 칼럼명 FROM 테이블명
 SELECT num,name,addr FROM member;
+9.0 table 저장된 목록 where 로 SELECT 하기
+SELECT * FROM 테이블명 WHERE num= ;
 10. table row 지우는 방법      ex) DELETE FROM member WHERE num=2;  번호가 2번인 row 삭제
 - num 지우는법 DELETE FROM table명 WHERE num=2;  oracle 에서는 = 는 비교연산자이다.
 - name 지우는법 DELETE FROM table명 WHERE name='';  ex) name='김구라';
@@ -26,14 +29,23 @@ UPDATE member SET name='' WHERE num=1;
 CREATE TABLE member(num NUMBER PRIMARY KEY, name VARCHAR2(10), addr VARCHAR2(20);
 14. table 정렬 하기
 SELECT * FROM 테이블이름 ORDER BY 칼럼이름 ASC(오름차순); DESC(내림차순);
-15. table 칼럼 추가하기
-ALTER TABLE 테이블명 ADD(추가할 타입);
+CREATE SEQUENCE test_seq; 
+SELECT 컬럼명,test_seq.NEXTVAL FROM 테이블명;
+15. table 컬럼 사이즈변경
+ALTER TABLE 테이블명 Modfiy(추가할 타입);
 16. 칼럼 길이 조정하기 조정조정
 SET LINESIZE 2000;     | VARCHAR(30) 이라할때 페이지 넘어가는것을 한페이지에 보여주는 길이
 SET PAGESIZE 100; -- 한페이지에 보여지는 로우수
+17. 테이블 사이즈 바꾸기.
 
+
+[시퀀스]
+시퀀스 생성
+CREATE SEQUENCE 테이블명_seq;
+시퀀스 삭제
+DROP SEQUENCE test_seq;
 JAVA 폴더에 OJDBC6 파일 복사해서 jdk1  jre lib ext 가서 복사 해서 넣어주기
-									jre1 폴더에서 lib ext 가서 복사해서 넣어주세요
+								jre1 폴더에서 lib ext 가서 복사해서 넣어주세요
 ResultSet  <=  PreparedStatement (select)  = > Connection = > Oracle DataBase
 				   				    < =               < =		
 

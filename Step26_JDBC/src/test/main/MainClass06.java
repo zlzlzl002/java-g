@@ -30,8 +30,8 @@ public class MainClass06 {
 			String sql="INSERT INTO member(num, name, addr) "
 					+ "VALUES(?,?,?)";
 			pstmt=conn.prepareStatement(sql);
-			pstmt.setInt(1, dto.getNum());
-			pstmt.setString(2, dto.getName());
+			pstmt.setInt(1, dto.getNum()); // 숫자 setInt
+			pstmt.setString(2, dto.getName()); // 문장열 setString
 			pstmt.setString(3, dto.getAddr());
 			pstmt.executeQuery();
 			System.out.println("회원 정보 저장중");
