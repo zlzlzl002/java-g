@@ -32,7 +32,7 @@ SELECT * FROM 테이블이름 ORDER BY 칼럼이름 ASC(오름차순); DESC(내림차순);
 CREATE SEQUENCE test_seq; 
 SELECT 컬럼명,test_seq.NEXTVAL FROM 테이블명;
 15. table 컬럼 사이즈변경
-ALTER TABLE 테이블명 Modfiy(추가할 타입);
+ALTER TABLE 테이블명 Modify(추가할 타입);
 16. 칼럼 길이 조정하기 조정조정
 SET LINESIZE 2000;     | VARCHAR(30) 이라할때 페이지 넘어가는것을 한페이지에 보여주는 길이
 SET PAGESIZE 100; -- 한페이지에 보여지는 로우수
