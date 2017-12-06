@@ -60,7 +60,19 @@ SELECT EMPNO AS  "사원번호",ENAME AS "사원이름" FORM EMP;
 - SELECT empno deptno FROM emp WHERE JOB='SALESMAN' OR JOB='MANAGER';
 IN 을 이용해서 출력 해보기        
 - SELECT empno deptno FROM emp where job IN('SALESMAN','MANAGER');
+// JOIN
+14. emp, dept 테이블을 이용해서 사원의 이름, 부서번호 , 부서명을 출력하기 
+15. emp, dept 테이블을 이용해서 다음과 같이 SELECT 해 보세요
+SWITH 는 RESEARCH 부서에서 근무 합니다.
+ALLEN 는  SALES 부서에서 근무 합니다.
+WARD 는 SALES 부서에서 근무합니다.
+SELECT ename || '는' || dname  || '부서에서 근무 합니다.' info FROM emp,dept WHERE 
 
+emp.deptno=dept.deptno; 
+
+
+!! NVL 함수 NULL 인값을 0으로 해줌
+- SELECT NVL(칼럼명, 0) FROM 테이블명;
 !!  J 시로시작하는 ename deptno 출력
 - SELECT ename,deptno FROM emp WHERE ename LIKE 'J%';
 !! E 가포함 인것 출력
@@ -78,8 +90,60 @@ SELECT ename,sal,hiredate FROM emp WHERE ename LIKE '_A%';
 SELECT ename,sal,hiredate FROM emp WHERE ename LIKE '%ES';
 - 입사년도가 81년 인 사원들의 입사일과 사원번호를 출력해 보세요.
 SELECT hiredate,empno FROM emp WHERE hiredate LIKE '81%';
+!! TO_CHAR 문자로바꾸다                         | 날 SYSDATE    HIREDATE
+- 년월일 DATE 
+SELECT TO_CHAR (SYSDATE, 'YYY"년 "MM"월 "DD"일"') FROM DUAL;
+// 24시 표시
+SELECT TO_CHAR (SYSDATE, 'YYY"년 "MM"월 "DD"일" HH24:MI:SS') FROM DUAL;
+// AM 추가 칼럼명 REGDATE로 해주기
+SELECT TO_CHAR (SYSDATE, 'YYY"년 "MM"월 "DD"일" AM HH24:MI:SS') REGDATE FROM DUAL;
+!! ROUND 반올림
+부서별 평균 급여를 구해보세요 (반올림해서 소수 첫째 자리 까지만)
+SELECT deptno,ROUND(AVG(sal),1) FROM emp GROUP BY deptno;
+!! HAVING 그룹 추림 
+SELECT deptno,ROUND(AVG(sal)) FROM emp WHERE sal >=1000 GROUP BY deptno HAVING 
+
+AVG(sal) >= 2000;
+//  ed 누르면 최근 입력 수정
+SELECT * FROM deft;
+SELECT * FROM salgrade;
+/ enter 누르면 실행
+!! SELF 조인 하는 방법
+SELECT e1.ename || '의 매니져는 ' || e2.ename || '입니다' info FROM emp e1, emp e2 WHERE 
+
+E1.MGR=E2.EMPNO
+!! [ ANSI 조인 ]
+- 부서명이 'ACCOUNTING' 인 사원의 이름, 입사일, 부서번호, 부서명 을 출력해보세요
+SELECT ename, hiredate, e.deptno, dname 
+FROM emp e, dept d
+WHERE e.deptno = d.deptno 
+AND dname = 'ACCOUNTING';
+
+- 테이블에 별칭 붙이기
+
+SELECT ename, hiredate, e.deptno, dname
+FROM emp e
+INNER JOIN dept d ON e.deptno = d.deptno
+WHERE dname = 'ACCOUNTING'
+
+- ANSI JOIN ( 조인 조건의 칼럼명이 같다면 )
+
+SELECT ename, hiredate, deptno, dname
+FROM emp
+INNER JOIN dept USING(deptno)
+WHERE dname = 'ACCOUNTING'
+
 
 
 //  DUAL TABLE  SELECT 범위 TABLE
-DESC DUAL; 
+DESC DUAL;
+
+<스티커 메모장>
+SYSDATE 시행하는 시점에 날짜
+
+연습용 테이블 만들기
+CREATE TABLE message( num number PRIMARY KEY, msg VARCHAR2(30), regdate DATE);
+
+CREATE SEQUENCE message_seq;
+
 */
