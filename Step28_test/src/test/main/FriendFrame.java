@@ -20,23 +20,25 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 
-import test.dao.MemberDao;
-import test.dto.MemberDto;
+import test.dao.FriendsDao;
+import test.dto.FriendsDto;
+
+
 
 /*
  *  GUI 잘안씀
  */
-public class MemberFrame extends JFrame implements ActionListener {
+public class FriendFrame extends JFrame implements ActionListener {
 	// 맴버필드 정의하기
-	JTextField inputNum, inputName, inputAddr;
+	JTextField inputNum, inputName, inputPhone, inputRegdate;
 	JButton saveBtn, deleteBtn, updateBtn;
 	// 테이블 모델
 	DefaultTableModel model;
 	// 테이블의 참조값을 저장할 필드
 	JTable table;
-
+	
 	// 생성자
-	public MemberFrame() {
+	public FriendFrame() {
 		initUI();
 	}
 
@@ -50,12 +52,14 @@ public class MemberFrame extends JFrame implements ActionListener {
 		// 레이블 객체 생성
 		JLabel label1 = new JLabel("번호");
 		JLabel label2 = new JLabel("이름");
-		JLabel label3 = new JLabel("주소");
+		JLabel label3 = new JLabel("핸드폰");
+		JLabel label4 = new JLabel("날짜");
 
 		// 텍스트 필드 객체 생성
 		inputNum = new JTextField(10);
 		inputName = new JTextField(10);
-		inputAddr = new JTextField(10);
+		inputPhone = new JTextField(10);
+		inputRegdate = new JTextField(10);
 
 		saveBtn = new JButton("저장");
 		deleteBtn = new JButton("삭제");
@@ -79,7 +83,9 @@ public class MemberFrame extends JFrame implements ActionListener {
 		topPanel.add(label2);
 		topPanel.add(inputName);
 		topPanel.add(label3);
-		topPanel.add(inputAddr);
+		topPanel.add(inputPhone);
+		topPanel.add(label4);
+		topPanel.add(inputRegdate);
 		topPanel.add(saveBtn);
 		topPanel.add(deleteBtn);
 		topPanel.add(updateBtn);
@@ -88,7 +94,7 @@ public class MemberFrame extends JFrame implements ActionListener {
 		add(topPanel, BorderLayout.NORTH);
 
 		// 테이블 칼럼 명을 String[] 에 담는다.
-		String[] colNames = { "번호", "이름", "주소" };
+		String[] colNames = { "번호", "이름", "폰번호", "날짜" };
 		// 기본 테이블 모델 객체 생성
 		// model.setColumnIdentifiers(colNames);
 		model = new DefaultTableModel(colNames, 0); // 지역변수값이 필드에 들어감
@@ -115,7 +121,7 @@ public class MemberFrame extends JFrame implements ActionListener {
 
 	// 메인 메소드
 	public static void main(String[] args) {
-		new MemberFrame();
+		new FriendFrame();
 
 	}
 
@@ -127,14 +133,16 @@ public class MemberFrame extends JFrame implements ActionListener {
 		if (command.equals("save")) {
 			// 입력한 이름과 주소 읽어오기
 			String name = inputName.getText();
-			String addr = inputAddr.getText();
+			String phone = inputPhone.getText();
+			String regdate = inputRegdate.getText();
 			// MemberDto 에 담는다
-			MemberDto dto = new MemberDto();
+			FriendsDto dto = new FriendsDto();
 			dto.setName(name); // 담는다 set
-			dto.setAddr(addr);
+			dto.setPhone(phone);
+			dto.setRegdate(regdate);
 
 			// MemberDao 이용해서 저장
-			MemberDao dao = MemberDao.getInstance();
+			FriendsDao dao = FriendsDao.getInstance();
 			boolean isSuccess = dao.insert(dto);
 			if (isSuccess) {
 				JOptionPane.showMessageDialog(this, "저장 했엉");
@@ -159,7 +167,7 @@ public class MemberFrame extends JFrame implements ActionListener {
 			// 삭제할 row 에 있는 회원 번호를 읽어온다. obj type 으로 받는데 int type으로 casting 한다
 			int num = (int) table.getValueAt(selectedIndex, 0);
 			// DB 에서 회원정보를 삭제한다.
-			MemberDao dao = MemberDao.getInstance();
+			FriendsDao dao = FriendsDao.getInstance();
 			dao.delete(num);
 		} else if (command.equals("update")) {
 			// 선택된 row 의 인덱스를 읽어온다.
@@ -171,11 +179,12 @@ public class MemberFrame extends JFrame implements ActionListener {
 			// 수정할 회원정보를 읽어와서
 			int num=(int)table.getValueAt(selectedIndex,0);
 			String name=(String)table.getValueAt(selectedIndex,1);
-			String addr=(String)table.getValueAt(selectedIndex, 2);
+			String phone=(String)table.getValueAt(selectedIndex, 2);
+			String regdate=(String)table.getValueAt(selectedIndex, 3);
 			// MemberDto 객체에 담고
-			MemberDto dto = new MemberDto(num,name,addr);
+			FriendsDto dto = new FriendsDto(num,name,phone,regdate);
 			// DB에 수정 반영하다.
-			MemberDao.getInstance().update(dto);
+			FriendsDao.getInstance().update(dto);
 			JOptionPane.showMessageDialog(this, "수정 하였습니다.");
 		}
 		// 회원 정보 다시 출력
@@ -185,14 +194,14 @@ public class MemberFrame extends JFrame implements ActionListener {
 	// DB 에 있는 회원 정보를 JTable 에 출력하는 메소드
 	public void displayMember() {
 		// 회원 정보를 읽어온다.
-		MemberDao dao = MemberDao.getInstance();
-		List<MemberDto> list = dao.getList();
+		FriendsDao dao = FriendsDao.getInstance();
+		List<FriendsDto> list = dao.getList();
 		// 테이블의 내용을 지우고
 		model.setRowCount(0);
 		// 다시 출력
-		for (MemberDto tmp : list) {// 반복문 돌면서
+		for (FriendsDto tmp : list) {// 반복문 돌면서
 			// row 데이터 구성
-			Object[] rowData = { tmp.getNum(), tmp.getName(), tmp.getAddr() };
+			Object[] rowData = { tmp.getNum(), tmp.getName(), tmp.getPhone(), tmp.getRegdate() };
 			model.addRow(rowData);
 		}
 	}
