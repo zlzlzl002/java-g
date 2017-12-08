@@ -146,4 +146,10 @@ CREATE TABLE message( num number PRIMARY KEY, msg VARCHAR2(30), regdate DATE);
 
 CREATE SEQUENCE message_seq;
 
+plug 하기
+Eclipse 
+http://quantum.sourceforge.net/ 들어가기
+How to install 누르면 주소 http://quantum.sourceforge.net/update-site".
+Help NEWistal  http://quantum.sourceforge.net/update-site 엔터누르고 select 하고 next
+I accept the 체크
 */
